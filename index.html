@@ -2,192 +2,369 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meine Rezeptwelt 🍓</title>
 
-    <title>Mein Apfelkuchen-Rezept 🍎</title>
+<style>
+* { box-sizing: border-box; }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff9f2;
+    color: #382f2a;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff8ed;
-            color: #42352b;
-        }
+header {
+    background: #b84e35;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
 
-        header {
-            background: #a9472d;
-            color: white;
-            text-align: center;
-            padding: 35px 15px;
-        }
+header h1 { font-size: 38px; margin: 0 0 10px; }
 
-        header h1 {
-            font-size: 36px;
-            margin: 0 0 10px;
-        }
+nav {
+    background: white;
+    padding: 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
 
-        .rezept {
-            max-width: 750px;
-            margin: 30px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px #00000012;
-        }
+nav a {
+    color: #a33e28;
+    text-decoration: none;
+    margin: 8px;
+    font-weight: bold;
+}
 
-        .kuchenbild {
-            width: 100%;
-            max-height: 380px;
-            object-fit: cover;
-            border-radius: 14px;
-        }
+.suche {
+    text-align: center;
+    padding: 25px 15px 10px;
+}
 
-        .info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 10px;
-            background: #fff0dc;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
+input, select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    max-width: 100%;
+}
 
-        h2 {
-            color: #a9472d;
-            border-bottom: 2px solid #f0d6b9;
-            padding-bottom: 8px;
-        }
+#suche {
+    width: min(450px, 90%);
+}
 
-        li {
-            padding: 7px 0;
-            line-height: 1.5;
-        }
+h2 {
+    color: #a33e28;
+}
 
-        .button {
-            background: #a9472d;
-            color: white;
-            border: none;
-            padding: 13px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.rezepte {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+    max-width: 1150px;
+    padding: 20px;
+    margin: auto;
+}
 
-        .button:hover {
-            background: #81351f;
-        }
+.karte {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px #00000012;
+}
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #765d4d;
-        }
+.karte img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
 
-        @media print {
-            header, footer, .button {
-                display: none;
-            }
+.inhalt { padding: 18px; }
 
-            body {
-                background: white;
-            }
+.inhalt h3 { color: #a33e28; }
 
-            .rezept {
-                box-shadow: none;
-            }
-        }
-    </style>
+button {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 15px;
+    background: #b84e35;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover { background: #8f3926; }
+
+.details {
+    display: none;
+    line-height: 1.7;
+}
+
+.details.anzeigen { display: block; }
+
+.details h4 { margin-bottom: 4px; }
+
+.kategorie {
+    color: #79665b;
+    font-size: 14px;
+}
+
+footer {
+    background: #382f2a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+@media (max-width: 500px) {
+    header h1 { font-size: 30px; }
+    nav a { display: inline-block; }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🍎 Mein Apfelkuchen</h1>
-    <p>Einfach, saftig und selbst gemacht ❤️</p>
+    <h1>🍓 Meine Rezeptwelt</h1>
+    <p>Leckere Ideen zum Kochen und Backen!</p>
 </header>
 
-<main class="rezept">
+<nav>
+    <a href="#start">Startseite</a>
+    <a href="#rezepte">Alle Rezepte</a>
+    <a href="#ueber">Über mich</a>
+</nav>
 
-    <img
-        class="kuchenbild"
-        src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a4?w=1000"
-        alt="Apfelkuchen">
+<section class="suche" id="start">
+    <h2>Was möchtest du heute kochen? 👩‍🍳</h2>
+    <p>Entdecke deine neuen Lieblingsrezepte!</p>
 
-    <div class="info">
-        <span>⏱️ Vorbereitung: 15 Min.</span>
-        <span>🔥 Backzeit: ca. 30 Min.</span>
-        <span>🍰 Einfach</span>
-    </div>
-
-    <h2>🛒 Zutaten</h2>
-
-    <ul>
-        <li>125 g weiche Butter</li>
-        <li>125 g Zucker</li>
-        <li>1 Päckchen Vanillezucker</li>
-        <li>1 Prise Salz</li>
-        <li>3 Eier</li>
-        <li>150 g Weizenmehl</li>
-        <li>1 TL Backpulver</li>
-        <li>4 Äpfel (à ca. 150 g)</li>
-        <li>Zimt und Zucker zum Bestreuen</li>
-    </ul>
-
-    <h2>👩‍🍳 Zubereitung</h2>
-
-    <ol>
-        <li>
-            <strong>Backofen vorheizen:</strong>
-            Den Backofen auf 180 °C Ober-/Unterhitze vorheizen.
-        </li>
-        <li>
-            <strong>Äpfel vorbereiten:</strong>
-            Die Äpfel waschen, nach Wunsch schälen,
-            entkernen und in kleine Stücke schneiden.
-        </li>
-        <li>
-            <strong>Teig zubereiten:</strong>
-            Butter, Zucker, Vanillezucker und Salz verrühren.
-            Die Eier dazugeben und unterrühren.
-            Mehl und Backpulver hinzufügen und alles
-            zu einem glatten Teig verrühren.
-        </li>
-        <li>
-            <strong>Äpfel verteilen:</strong>
-            Den Teig in eine gefettete Kuchenform geben.
-            Die Apfelstücke obenauf verteilen.
-        </li>
-        <li>
-            <strong>Bestreuen:</strong>
-            Zimt und Zucker über die Äpfel streuen.
-        </li>
-        <li>
-            <strong>Backen:</strong>
-            Den Kuchen bei 180 °C etwa 30 Minuten backen.
-            Mit einem Holzstäbchen prüfen, ob er fertig ist.
-        </li>
-    </ol>
+    <input id="suche" type="search"
+        placeholder="🔎 Rezept suchen..."
+        oninput="filtern()">
 
     <p>
-        🍎 <strong>Guten Appetit!</strong>
-        Lass dir deinen selbst gebackenen Apfelkuchen schmecken.
+        <select id="kategorie" onchange="filtern()">
+            <option value="alle">Alle Kategorien</option>
+            <option value="Kuchen">Kuchen & Backen</option>
+            <option value="Hauptgericht">Hauptgerichte</option>
+            <option value="Dessert">Desserts</option>
+            <option value="Frühstück">Frühstück</option>
+        </select>
     </p>
+</section>
 
-    <button class="button" onclick="window.print()">
-        🖨️ Rezept drucken
-    </button>
+<main>
+<section class="rezepte" id="rezepte">
 
+<!-- APFELKUCHEN -->
+<article class="karte" data-kategorie="Kuchen">
+<img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a4?w=700"
+alt="Apfelkuchen">
+
+<div class="inhalt">
+<p class="kategorie">🍰 Kuchen & Backen</p>
+<h3>🍎 Saftiger Apfelkuchen</h3>
+<p>⏱️ Ca. 45 Minuten · Einfach</p>
+
+<button onclick="anzeigen('apfel')">Rezept ansehen</button>
+
+<div class="details" id="apfel">
+<h4>Zutaten</h4>
+<ul>
+<li>125 g weiche Butter</li>
+<li>125 g Zucker</li>
+<li>1 Päckchen Vanillezucker</li>
+<li>1 Prise Salz</li>
+<li>3 Eier</li>
+<li>150 g Weizenmehl</li>
+<li>1 TL Backpulver</li>
+<li>4 Äpfel (à ca. 150 g)</li>
+<li>Zimt und Zucker</li>
+</ul>
+<h4>Zubereitung</h4>
+<ol>
+<li>Äpfel entkernen und in kleine Stücke schneiden.</li>
+<li>Butter, Zucker, Vanillezucker und Salz verrühren.</li>
+<li>Eier hinzufügen. Mehl und Backpulver unterrühren.</li>
+<li>Teig in eine gefettete Backform geben und die Äpfel darauf verteilen.</li>
+<li>Mit Zimt und Zucker bestreuen.</li>
+<li>Bei 180 °C Ober-/Unterhitze etwa 30 Minuten backen.</li>
+</ol>
+</div>
+</div>
+</article>
+
+<!-- PIZZA -->
+<article class="karte" data-kategorie="Hauptgericht">
+<img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700"
+alt="Pizza">
+<div class="inhalt">
+<p class="kategorie">🍕 Hauptgerichte</p>
+<h3>Pizza Margherita</h3>
+<p>⏱️ Ca. 30 Minuten · Einfach</p>
+<button onclick="anzeigen('pizza')">Rezept ansehen</button>
+<div class="details" id="pizza">
+<h4>Zutaten</h4>
+<ul>
+<li>1 Pizzateig</li>
+<li>150 g passierte Tomaten</li>
+<li>150 g geriebener Käse</li>
+<li>Oregano</li>
+</ul>
+<h4>Zubereitung</h4>
+Teig mit Tomatensoße bestreichen, Käse und Oregano
+darauf verteilen. Bei 220 °C etwa 12–15 Minuten backen.
+</div>
+</div>
+</article>
+
+<!-- SPAGHETTI -->
+<article class="karte" data-kategorie="Hauptgericht">
+<img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700"
+alt="Spaghetti">
+<div class="inhalt">
+<p class="kategorie">🍝 Hauptgerichte</p>
+<h3>Spaghetti mit Tomatensoße</h3>
+<p>⏱️ Ca. 25 Minuten · Einfach</p>
+<button onclick="anzeigen('spaghetti')">Rezept ansehen</button>
+<div class="details" id="spaghetti">
+<h4>Zutaten</h4>
+<ul>
+<li>250 g Spaghetti</li>
+<li>400 g gehackte Tomaten</li>
+<li>1 Zwiebel</li>
+<li>1 EL Olivenöl</li>
+<li>Salz, Pfeffer und Kräuter</li>
+</ul>
+<h4>Zubereitung</h4>
+Spaghetti kochen. Zwiebel schneiden und in Öl anbraten.
+Tomaten und Gewürze dazugeben und 10 Minuten köcheln lassen.
+Mit den Nudeln servieren.
+</div>
+</div>
+</article>
+
+<!-- BROWNIES -->
+<article class="karte" data-kategorie="Dessert">
+<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700"
+alt="Schokoladenbrownies">
+<div class="inhalt">
+<p class="kategorie">🍫 Desserts</p>
+<h3>Schokoladen-Brownies</h3>
+<p>⏱️ Ca. 35 Minuten · Einfach</p>
+<button onclick="anzeigen('brownies')">Rezept ansehen</button>
+<div class="details" id="brownies">
+<h4>Zutaten</h4>
+<ul>
+<li>150 g Schokolade</li>
+<li>100 g Butter</li>
+<li>120 g Zucker</li>
+<li>2 Eier</li>
+<li>80 g Mehl</li>
+</ul>
+<h4>Zubereitung</h4>
+Schokolade und Butter schmelzen. Zucker und Eier einrühren,
+danach das Mehl unterheben. In eine Form geben und bei
+180 °C etwa 20–25 Minuten backen.
+</div>
+</div>
+</article>
+
+<!-- PFANNKUCHEN -->
+<article class="karte" data-kategorie="Frühstück">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=700"
+alt="Pfannkuchen">
+<div class="inhalt">
+<p class="kategorie">🥞 Frühstück</p>
+<h3>Fluffige Pfannkuchen</h3>
+<p>⏱️ Ca. 20 Minuten · Einfach</p>
+<button onclick="anzeigen('pfannkuchen')">Rezept ansehen</button>
+<div class="details" id="pfannkuchen">
+<h4>Zutaten</h4>
+<ul>
+<li>200 g Mehl</li>
+<li>2 Eier</li>
+<li>250 ml Milch</li>
+<li>1 EL Zucker</li>
+<li>1 TL Backpulver</li>
+</ul>
+<h4>Zubereitung</h4>
+Alle Zutaten zu einem glatten Teig verrühren.
+In einer leicht gefetteten Pfanne portionsweise
+von beiden Seiten goldbraun backen.
+</div>
+</div>
+</article>
+
+<!-- WAFFELN -->
+<article class="karte" data-kategorie="Kuchen">
+<img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=700"
+alt="Waffeln">
+<div class="inhalt">
+<p class="kategorie">🧇 Kuchen & Backen</p>
+<h3>Hausgemachte Waffeln</h3>
+<p>⏱️ Ca. 20 Minuten · Einfach</p>
+<button onclick="anzeigen('waffeln')">Rezept ansehen</button>
+<div class="details" id="waffeln">
+<h4>Zutaten</h4>
+<ul>
+<li>125 g weiche Butter</li>
+<li>100 g Zucker</li>
+<li>2 Eier</li>
+<li>200 g Mehl</li>
+<li>150 ml Milch</li>
+<li>1 TL Backpulver</li>
+</ul>
+<h4>Zubereitung</h4>
+Butter und Zucker verrühren, Eier hinzufügen.
+Mehl, Backpulver und Milch unterrühren.
+Im vorgeheizten Waffeleisen goldbraun backen.
+</div>
+</div>
+</article>
+
+</section>
 </main>
 
+<section class="suche" id="ueber">
+<h2>❤️ Willkommen in meiner Küche!</h2>
+<p>Hier sammeln wir leckere Rezepte für jeden Tag.</p>
+<p>Von herzhaften Gerichten bis zu süßen Kuchen.</p>
+</section>
+
 <footer>
-    Mit ❤️ gebacken · Mein Apfelkuchen-Rezept
+<p>🍓 Meine Rezeptwelt · Mit Liebe gekocht und gebacken</p>
 </footer>
+
+<script>
+function anzeigen(id) {
+    document.getElementById(id).classList.toggle("anzeigen");
+}
+
+function filtern() {
+    const suchtext = document.getElementById("suche")
+        .value.toLowerCase();
+    const kategorie = document.getElementById("kategorie").value;
+
+    document.querySelectorAll(".karte").forEach(karte => {
+        const text = karte.innerText.toLowerCase();
+        const passtText = text.includes(suchtext);
+        const passtKategorie =
+            kategorie === "alle" ||
+            karte.dataset.kategorie === kategorie;
+
+        karte.style.display =
+            passtText && passtKategorie ? "" : "none";
+    });
+}
+</script>
 
 </body>
 </html>
