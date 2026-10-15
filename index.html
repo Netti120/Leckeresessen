@@ -1,370 +1,42 @@
 
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meine Rezeptwelt 🍓</title>
-
-<style>
-* { box-sizing: border-box; }
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fff9f2;
-    color: #382f2a;
-}
-
-header {
-    background: #b84e35;
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-}
-
-header h1 { font-size: 38px; margin: 0 0 10px; }
-
-nav {
-    background: white;
-    padding: 16px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-}
-
-nav a {
-    color: #a33e28;
-    text-decoration: none;
-    margin: 8px;
-    font-weight: bold;
-}
-
-.suche {
-    text-align: center;
-    padding: 25px 15px 10px;
-}
-
-input, select {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    max-width: 100%;
-}
-
-#suche {
-    width: min(450px, 90%);
-}
-
-h2 {
-    color: #a33e28;
-}
-
-.rezepte {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 22px;
-    max-width: 1150px;
-    padding: 20px;
-    margin: auto;
-}
-
-.karte {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 4px 14px #00000012;
-}
-
-.karte img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-}
-
-.inhalt { padding: 18px; }
-
-.inhalt h3 { color: #a33e28; }
-
-button {
-    border: 0;
-    border-radius: 8px;
-    padding: 11px 15px;
-    background: #b84e35;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-button:hover { background: #8f3926; }
-
-.details {
-    display: none;
-    line-height: 1.7;
-}
-
-.details.anzeigen { display: block; }
-
-.details h4 { margin-bottom: 4px; }
-
-.kategorie {
-    color: #79665b;
-    font-size: 14px;
-}
-
-footer {
-    background: #382f2a;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 25px;
-}
-
-@media (max-width: 500px) {
-    header h1 { font-size: 30px; }
-    nav a { display: inline-block; }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>🍓 Meine Rezeptwelt</h1>
-    <p>Leckere Ideen zum Kochen und Backen!</p>
-</header>
-
-<nav>
-    <a href="#start">Startseite</a>
-    <a href="#rezepte">Alle Rezepte</a>
-    <a href="#ueber">Über mich</a>
-</nav>
-
-<section class="suche" id="start">
-    <h2>Was möchtest du heute kochen? 👩‍🍳</h2>
-    <p>Entdecke deine neuen Lieblingsrezepte!</p>
-
-    <input id="suche" type="search"
-        placeholder="🔎 Rezept suchen..."
-        oninput="filtern()">
-
-    <p>
-        <select id="kategorie" onchange="filtern()">
-            <option value="alle">Alle Kategorien</option>
-            <option value="Kuchen">Kuchen & Backen</option>
-            <option value="Hauptgericht">Hauptgerichte</option>
-            <option value="Dessert">Desserts</option>
-            <option value="Frühstück">Frühstück</option>
-        </select>
-    </p>
-</section>
-
-<main>
-<section class="rezepte" id="rezepte">
-
-<!-- APFELKUCHEN -->
-<article class="karte" data-kategorie="Kuchen">
-<img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a4?w=700"
-alt="Apfelkuchen">
+<!-- CRÊPES -->
+<article class="karte" data-kategorie="Frühstück">
+<img
+    src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=700"
+    alt="Süße Crêpes">
 
 <div class="inhalt">
-<p class="kategorie">🍰 Kuchen & Backen</p>
-<h3>🍎 Saftiger Apfelkuchen</h3>
-<p>⏱️ Ca. 45 Minuten · Einfach</p>
+<p class="kategorie">🥞 Frühstück & Süßes</p>
+<h3>🥞 Süße Crêpes</h3>
+<p>⏱️ Ca. 20 Minuten · Einfach</p>
 
-<button onclick="anzeigen('apfel')">Rezept ansehen</button>
+<button onclick="anzeigen('crepes')">
+    Rezept ansehen
+</button>
 
-<div class="details" id="apfel">
+<div class="details" id="crepes">
 <h4>Zutaten</h4>
 <ul>
-<li>125 g weiche Butter</li>
-<li>125 g Zucker</li>
-<li>1 Päckchen Vanillezucker</li>
-<li>1 Prise Salz</li>
-<li>3 Eier</li>
-<li>150 g Weizenmehl</li>
-<li>1 TL Backpulver</li>
-<li>4 Äpfel (à ca. 150 g)</li>
-<li>Zimt und Zucker</li>
+    <li>250 g Weizenmehl</li>
+    <li>500 ml Milch</li>
+    <li>3 Eier</li>
+    <li>1 Päckchen Vanillezucker</li>
+    <li>1 Prise Salz</li>
+    <li>1 EL geschmolzene Butter</li>
+    <li>Etwas Butter zum Ausbacken</li>
 </ul>
+
 <h4>Zubereitung</h4>
 <ol>
-<li>Äpfel entkernen und in kleine Stücke schneiden.</li>
-<li>Butter, Zucker, Vanillezucker und Salz verrühren.</li>
-<li>Eier hinzufügen. Mehl und Backpulver unterrühren.</li>
-<li>Teig in eine gefettete Backform geben und die Äpfel darauf verteilen.</li>
-<li>Mit Zimt und Zucker bestreuen.</li>
-<li>Bei 180 °C Ober-/Unterhitze etwa 30 Minuten backen.</li>
+    <li>Mehl, Milch, Eier, Vanillezucker und Salz zu einem glatten Teig verrühren.</li>
+    <li>Die geschmolzene Butter unterrühren.</li>
+    <li>Den Teig etwa 10 Minuten ruhen lassen.</li>
+    <li>Eine Pfanne leicht einfetten und etwas Teig dünn hineingeben.</li>
+    <li>Die Crêpes von beiden Seiten goldgelb backen.</li>
+    <li>Nach Wunsch mit Zucker, Zimt, Nutella oder Marmelade servieren.</li>
 </ol>
+
+<p>❤️ Guten Appetit!</p>
 </div>
 </div>
 </article>
-
-<!-- PIZZA -->
-<article class="karte" data-kategorie="Hauptgericht">
-<img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700"
-alt="Pizza">
-<div class="inhalt">
-<p class="kategorie">🍕 Hauptgerichte</p>
-<h3>Pizza Margherita</h3>
-<p>⏱️ Ca. 30 Minuten · Einfach</p>
-<button onclick="anzeigen('pizza')">Rezept ansehen</button>
-<div class="details" id="pizza">
-<h4>Zutaten</h4>
-<ul>
-<li>1 Pizzateig</li>
-<li>150 g passierte Tomaten</li>
-<li>150 g geriebener Käse</li>
-<li>Oregano</li>
-</ul>
-<h4>Zubereitung</h4>
-Teig mit Tomatensoße bestreichen, Käse und Oregano
-darauf verteilen. Bei 220 °C etwa 12–15 Minuten backen.
-</div>
-</div>
-</article>
-
-<!-- SPAGHETTI -->
-<article class="karte" data-kategorie="Hauptgericht">
-<img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700"
-alt="Spaghetti">
-<div class="inhalt">
-<p class="kategorie">🍝 Hauptgerichte</p>
-<h3>Spaghetti mit Tomatensoße</h3>
-<p>⏱️ Ca. 25 Minuten · Einfach</p>
-<button onclick="anzeigen('spaghetti')">Rezept ansehen</button>
-<div class="details" id="spaghetti">
-<h4>Zutaten</h4>
-<ul>
-<li>250 g Spaghetti</li>
-<li>400 g gehackte Tomaten</li>
-<li>1 Zwiebel</li>
-<li>1 EL Olivenöl</li>
-<li>Salz, Pfeffer und Kräuter</li>
-</ul>
-<h4>Zubereitung</h4>
-Spaghetti kochen. Zwiebel schneiden und in Öl anbraten.
-Tomaten und Gewürze dazugeben und 10 Minuten köcheln lassen.
-Mit den Nudeln servieren.
-</div>
-</div>
-</article>
-
-<!-- BROWNIES -->
-<article class="karte" data-kategorie="Dessert">
-<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700"
-alt="Schokoladenbrownies">
-<div class="inhalt">
-<p class="kategorie">🍫 Desserts</p>
-<h3>Schokoladen-Brownies</h3>
-<p>⏱️ Ca. 35 Minuten · Einfach</p>
-<button onclick="anzeigen('brownies')">Rezept ansehen</button>
-<div class="details" id="brownies">
-<h4>Zutaten</h4>
-<ul>
-<li>150 g Schokolade</li>
-<li>100 g Butter</li>
-<li>120 g Zucker</li>
-<li>2 Eier</li>
-<li>80 g Mehl</li>
-</ul>
-<h4>Zubereitung</h4>
-Schokolade und Butter schmelzen. Zucker und Eier einrühren,
-danach das Mehl unterheben. In eine Form geben und bei
-180 °C etwa 20–25 Minuten backen.
-</div>
-</div>
-</article>
-
-<!-- PFANNKUCHEN -->
-<article class="karte" data-kategorie="Frühstück">
-<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=700"
-alt="Pfannkuchen">
-<div class="inhalt">
-<p class="kategorie">🥞 Frühstück</p>
-<h3>Fluffige Pfannkuchen</h3>
-<p>⏱️ Ca. 20 Minuten · Einfach</p>
-<button onclick="anzeigen('pfannkuchen')">Rezept ansehen</button>
-<div class="details" id="pfannkuchen">
-<h4>Zutaten</h4>
-<ul>
-<li>200 g Mehl</li>
-<li>2 Eier</li>
-<li>250 ml Milch</li>
-<li>1 EL Zucker</li>
-<li>1 TL Backpulver</li>
-</ul>
-<h4>Zubereitung</h4>
-Alle Zutaten zu einem glatten Teig verrühren.
-In einer leicht gefetteten Pfanne portionsweise
-von beiden Seiten goldbraun backen.
-</div>
-</div>
-</article>
-
-<!-- WAFFELN -->
-<article class="karte" data-kategorie="Kuchen">
-<img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=700"
-alt="Waffeln">
-<div class="inhalt">
-<p class="kategorie">🧇 Kuchen & Backen</p>
-<h3>Hausgemachte Waffeln</h3>
-<p>⏱️ Ca. 20 Minuten · Einfach</p>
-<button onclick="anzeigen('waffeln')">Rezept ansehen</button>
-<div class="details" id="waffeln">
-<h4>Zutaten</h4>
-<ul>
-<li>125 g weiche Butter</li>
-<li>100 g Zucker</li>
-<li>2 Eier</li>
-<li>200 g Mehl</li>
-<li>150 ml Milch</li>
-<li>1 TL Backpulver</li>
-</ul>
-<h4>Zubereitung</h4>
-Butter und Zucker verrühren, Eier hinzufügen.
-Mehl, Backpulver und Milch unterrühren.
-Im vorgeheizten Waffeleisen goldbraun backen.
-</div>
-</div>
-</article>
-
-</section>
-</main>
-
-<section class="suche" id="ueber">
-<h2>❤️ Willkommen in meiner Küche!</h2>
-<p>Hier sammeln wir leckere Rezepte für jeden Tag.</p>
-<p>Von herzhaften Gerichten bis zu süßen Kuchen.</p>
-</section>
-
-<footer>
-<p>🍓 Meine Rezeptwelt · Mit Liebe gekocht und gebacken</p>
-</footer>
-
-<script>
-function anzeigen(id) {
-    document.getElementById(id).classList.toggle("anzeigen");
-}
-
-function filtern() {
-    const suchtext = document.getElementById("suche")
-        .value.toLowerCase();
-    const kategorie = document.getElementById("kategorie").value;
-
-    document.querySelectorAll(".karte").forEach(karte => {
-        const text = karte.innerText.toLowerCase();
-        const passtText = text.includes(suchtext);
-        const passtKategorie =
-            kategorie === "alle" ||
-            karte.dataset.kategorie === kategorie;
-
-        karte.style.display =
-            passtText && passtKategorie ? "" : "none";
-    });
-}
-</script>
-
-</body>
-</html>
