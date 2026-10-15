@@ -1,42 +1,304 @@
 
-<!-- CRÊPES -->
-<article class="karte" data-kategorie="Frühstück">
-<img
-    src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=700"
-    alt="Süße Crêpes">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="inhalt">
-<p class="kategorie">🥞 Frühstück & Süßes</p>
-<h3>🥞 Süße Crêpes</h3>
-<p>⏱️ Ca. 20 Minuten · Einfach</p>
+    <title>Meine Rezeptwelt 🍓</title>
 
-<button onclick="anzeigen('crepes')">
-    Rezept ansehen
-</button>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<div class="details" id="crepes">
-<h4>Zutaten</h4>
-<ul>
-    <li>250 g Weizenmehl</li>
-    <li>500 ml Milch</li>
-    <li>3 Eier</li>
-    <li>1 Päckchen Vanillezucker</li>
-    <li>1 Prise Salz</li>
-    <li>1 EL geschmolzene Butter</li>
-    <li>Etwas Butter zum Ausbacken</li>
-</ul>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f0;
+            color: #42352e;
+        }
 
-<h4>Zubereitung</h4>
-<ol>
-    <li>Mehl, Milch, Eier, Vanillezucker und Salz zu einem glatten Teig verrühren.</li>
-    <li>Die geschmolzene Butter unterrühren.</li>
-    <li>Den Teig etwa 10 Minuten ruhen lassen.</li>
-    <li>Eine Pfanne leicht einfetten und etwas Teig dünn hineingeben.</li>
-    <li>Die Crêpes von beiden Seiten goldgelb backen.</li>
-    <li>Nach Wunsch mit Zucker, Zimt, Nutella oder Marmelade servieren.</li>
-</ol>
+        header {
+            background: #b84e35;
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
 
-<p>❤️ Guten Appetit!</p>
-</div>
-</div>
-</article>
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+        }
+
+        nav {
+            background: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #a33e28;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .einleitung {
+            text-align: center;
+            padding: 25px 15px 10px;
+        }
+
+        #suche {
+            width: min(400px, 90%);
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .rezepte {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .karte {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000012;
+        }
+
+        .karte img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .inhalt {
+            padding: 20px;
+        }
+
+        .inhalt h2 {
+            color: #a33e28;
+        }
+
+        .kategorie {
+            color: #886b5a;
+            font-size: 14px;
+        }
+
+        button {
+            background: #b84e35;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #8f3926;
+        }
+
+        .details {
+            display: none;
+            line-height: 1.7;
+        }
+
+        .details.anzeigen {
+            display: block;
+        }
+
+        .details h3 {
+            color: #a33e28;
+            margin-bottom: 5px;
+        }
+
+        .details li {
+            margin-bottom: 5px;
+        }
+
+        .ueber {
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer {
+            background: #42352e;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍓 Meine Rezeptwelt</h1>
+    <p>Leckere Rezepte zum Kochen und Backen ❤️</p>
+</header>
+
+<nav>
+    <a href="#start">Startseite</a>
+    <a href="#rezepte">Meine Rezepte</a>
+    <a href="#ueber">Über mich</a>
+</nav>
+
+<section class="einleitung" id="start">
+    <h2>Willkommen in meiner Küche! 👩‍🍳</h2>
+    <p>Hier findest du leckere Rezepte zum Selbermachen.</p>
+
+    <input
+        type="search"
+        id="suche"
+        placeholder="🔎 Rezept suchen ..."
+        oninput="rezepteFiltern()">
+</section>
+
+<main class="rezepte" id="rezepte">
+
+    <!-- APFELKUCHEN -->
+
+    <article class="karte">
+        <img
+            src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a4?w=800"
+            alt="Apfelkuchen">
+
+        <div class="inhalt">
+            <p class="kategorie">🍎 Kuchen und Backen</p>
+            <h2>Saftiger Apfelkuchen</h2>
+            <p>⏱️ Ca. 45 Minuten · Einfach</p>
+
+            <button onclick="rezeptAnzeigen('apfelkuchen', this)">
+                Rezept ansehen
+            </button>
+
+            <div class="details" id="apfelkuchen">
+                <h3>Zutaten</h3>
+
+                <ul>
+                    <li>125 g weiche Butter</li>
+                    <li>125 g Zucker</li>
+                    <li>1 Päckchen Vanillezucker</li>
+                    <li>1 Prise Salz</li>
+                    <li>3 Eier</li>
+                    <li>150 g Weizenmehl</li>
+                    <li>1 TL Backpulver</li>
+                    <li>4 Äpfel (à ca. 150 g)</li>
+                    <li>Zimt und Zucker</li>
+                </ul>
+
+                <h3>Zubereitung</h3>
+
+                <ol>
+                    <li>Den Backofen auf 180 °C Ober-/Unterhitze vorheizen.</li>
+                    <li>Die Äpfel entkernen und in kleine Stücke schneiden.</li>
+                    <li>Butter, Zucker, Vanillezucker und Salz verrühren.</li>
+                    <li>Die Eier dazugeben und unterrühren.</li>
+                    <li>Mehl und Backpulver hinzufügen und alles gut verrühren.</li>
+                    <li>Den Teig in eine gefettete Kuchenform geben.</li>
+                    <li>Die Apfelstücke obenauf verteilen.</li>
+                    <li>Mit Zimt und Zucker bestreuen.</li>
+                    <li>Etwa 30 Minuten bei 180 °C backen. Mit einem Holzstäbchen prüfen, ob der Kuchen fertig ist.</li>
+                </ol>
+
+                <p>🍎 Guten Appetit!</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- CRÊPES -->
+
+    <article class="karte">
+        <img
+            src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800"
+            alt="Süße Crêpes">
+
+        <div class="inhalt">
+            <p class="kategorie">🥞 Frühstück und Süßes</p>
+            <h2>Süße Crêpes</h2>
+            <p>⏱️ Ca. 20 Minuten · Einfach</p>
+
+            <button onclick="rezeptAnzeigen('crepes', this)">
+                Rezept ansehen
+            </button>
+
+            <div class="details" id="crepes">
+                <h3>Zutaten</h3>
+
+                <ul>
+                    <li>250 g Weizenmehl</li>
+                    <li>500 ml Milch</li>
+                    <li>3 Eier</li>
+                    <li>1 Päckchen Vanillezucker</li>
+                    <li>1 Prise Salz</li>
+                    <li>1 EL geschmolzene Butter</li>
+                    <li>Etwas Butter zum Ausbacken</li>
+                </ul>
+
+                <h3>Zubereitung</h3>
+
+                <ol>
+                    <li>Mehl, Milch, Eier, Vanillezucker und Salz zu einem glatten Teig verrühren.</li>
+                    <li>Die geschmolzene Butter unterrühren.</li>
+                    <li>Den Teig etwa 10 Minuten ruhen lassen.</li>
+                    <li>Eine Pfanne leicht einfetten und etwas Teig dünn hineingeben.</li>
+                    <li>Die Crêpes von beiden Seiten goldgelb backen.</li>
+                    <li>Nach Wunsch mit Zucker, Zimt, Marmelade oder Schokoladencreme servieren.</li>
+                </ol>
+
+                <p>🥞 Guten Appetit!</p>
+            </div>
+        </div>
+    </article>
+
+</main>
+
+<section class="ueber" id="ueber">
+    <h2>❤️ Über meine Rezeptwelt</h2>
+    <p>Hier sammle ich meine Lieblingsrezepte.</p>
+    <p>Es werden nach und nach weitere leckere Rezepte dazukommen!</p>
+</section>
+
+<footer>
+    <p>🍓 Meine Rezeptwelt · Mit Liebe gekocht und gebacken</p>
+</footer>
+
+<script>
+    function rezeptAnzeigen(id, button) {
+        const rezept = document.getElementById(id);
+
+        rezept.classList.toggle("anzeigen");
+
+        if (rezept.classList.contains("anzeigen")) {
+            button.textContent = "Rezept schließen";
+        } else {
+            button.textContent = "Rezept ansehen";
+        }
+    }
+
+    function rezepteFiltern() {
+        const suchtext = document
+            .getElementById("suche")
+            .value
+            .toLowerCase();
+
+        document.querySelectorAll(".karte").forEach(karte => {
+            const text = karte.innerText.toLowerCase();
+
+            karte.style.display =
+                text.includes(suchtext) ? "" : "none";
+        });
+    }
+</script>
+
+</body>
+</html>
