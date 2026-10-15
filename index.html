@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Rezeptwelt</title>
+
+    <title>Mein Apfelkuchen-Rezept 🍎</title>
 
     <style>
         * {
@@ -13,101 +15,92 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #fffaf3;
-            color: #333;
+            background: #fff8ed;
+            color: #42352b;
         }
 
         header {
-            background: #e87945;
+            background: #a9472d;
             color: white;
             text-align: center;
             padding: 35px 15px;
         }
 
         header h1 {
-            font-size: 38px;
+            font-size: 36px;
             margin: 0 0 10px;
         }
 
-        nav {
-            background: #fff;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: #b94e25;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: bold;
-        }
-
-        .intro {
-            text-align: center;
-            padding: 30px 15px 10px;
-        }
-
-        .rezepte {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: 25px auto;
-            padding: 20px;
-        }
-
-        .karte {
+        .rezept {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 25px;
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px #00000012;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #00000012;
         }
 
-        .karte img {
+        .kuchenbild {
             width: 100%;
-            height: 200px;
+            max-height: 380px;
             object-fit: cover;
+            border-radius: 14px;
         }
 
-        .inhalt {
-            padding: 20px;
+        .info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #fff0dc;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
         }
 
-        .inhalt h3 {
-            color: #c45b30;
-            margin-top: 0;
+        h2 {
+            color: #a9472d;
+            border-bottom: 2px solid #f0d6b9;
+            padding-bottom: 8px;
         }
 
-        button {
-            background: #e87945;
+        li {
+            padding: 7px 0;
+            line-height: 1.5;
+        }
+
+        .button {
+            background: #a9472d;
             color: white;
             border: none;
-            padding: 12px 18px;
+            padding: 13px 20px;
             border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 15px;
         }
 
-        button:hover {
-            background: #c45b30;
-        }
-
-        .details {
-            display: none;
-            line-height: 1.7;
-        }
-
-        .details.anzeigen {
-            display: block;
+        .button:hover {
+            background: #81351f;
         }
 
         footer {
-            background: #333;
-            color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 30px;
+            color: #765d4d;
+        }
+
+        @media print {
+            header, footer, .button {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .rezept {
+                box-shadow: none;
+            }
         }
     </style>
 </head>
@@ -115,134 +108,86 @@
 <body>
 
 <header>
-    <h1>🍓 Meine Rezeptwelt</h1>
-    <p>Leckere Rezepte für jeden Tag!</p>
+    <h1>🍎 Mein Apfelkuchen</h1>
+    <p>Einfach, saftig und selbst gemacht ❤️</p>
 </header>
 
-<nav>
-    <a href="#rezepte">Rezepte</a>
-    <a href="#ueber">Über uns</a>
-</nav>
+<main class="rezept">
 
-<section class="intro" id="rezepte">
-    <h2>Willkommen in meiner Küche! 👩‍🍳</h2>
-    <p>Entdecke einfache und leckere Rezepte.</p>
-</section>
+    <img
+        class="kuchenbild"
+        src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a4?w=1000"
+        alt="Apfelkuchen">
 
-<main class="rezepte">
+    <div class="info">
+        <span>⏱️ Vorbereitung: 15 Min.</span>
+        <span>🔥 Backzeit: ca. 30 Min.</span>
+        <span>🍰 Einfach</span>
+    </div>
 
-    <article class="karte">
-        <img
-            src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700"
-            alt="Spaghetti mit Tomatensoße">
+    <h2>🛒 Zutaten</h2>
 
-        <div class="inhalt">
-            <h3>🍝 Spaghetti</h3>
-            <p>⏱️ 25 Minuten | Einfach</p>
+    <ul>
+        <li>125 g weiche Butter</li>
+        <li>125 g Zucker</li>
+        <li>1 Päckchen Vanillezucker</li>
+        <li>1 Prise Salz</li>
+        <li>3 Eier</li>
+        <li>150 g Weizenmehl</li>
+        <li>1 TL Backpulver</li>
+        <li>4 Äpfel (à ca. 150 g)</li>
+        <li>Zimt und Zucker zum Bestreuen</li>
+    </ul>
 
-            <button onclick="rezeptAnzeigen('pasta')">
-                Rezept ansehen
-            </button>
+    <h2>👩‍🍳 Zubereitung</h2>
 
-            <div class="details" id="pasta">
-                <h4>Zutaten</h4>
-                <ul>
-                    <li>250 g Spaghetti</li>
-                    <li>400 g gehackte Tomaten</li>
-                    <li>1 Zwiebel</li>
-                    <li>1 EL Olivenöl</li>
-                    <li>Salz und Pfeffer</li>
-                </ul>
+    <ol>
+        <li>
+            <strong>Backofen vorheizen:</strong>
+            Den Backofen auf 180 °C Ober-/Unterhitze vorheizen.
+        </li>
+        <li>
+            <strong>Äpfel vorbereiten:</strong>
+            Die Äpfel waschen, nach Wunsch schälen,
+            entkernen und in kleine Stücke schneiden.
+        </li>
+        <li>
+            <strong>Teig zubereiten:</strong>
+            Butter, Zucker, Vanillezucker und Salz verrühren.
+            Die Eier dazugeben und unterrühren.
+            Mehl und Backpulver hinzufügen und alles
+            zu einem glatten Teig verrühren.
+        </li>
+        <li>
+            <strong>Äpfel verteilen:</strong>
+            Den Teig in eine gefettete Kuchenform geben.
+            Die Apfelstücke obenauf verteilen.
+        </li>
+        <li>
+            <strong>Bestreuen:</strong>
+            Zimt und Zucker über die Äpfel streuen.
+        </li>
+        <li>
+            <strong>Backen:</strong>
+            Den Kuchen bei 180 °C etwa 30 Minuten backen.
+            Mit einem Holzstäbchen prüfen, ob er fertig ist.
+        </li>
+    </ol>
 
-                <h4>Zubereitung</h4>
-                Nudeln kochen. Zwiebel klein schneiden
-                und in Öl anbraten. Tomaten dazugeben,
-                würzen und 10 Minuten köcheln lassen.
-                Mit den Nudeln servieren.
-            </div>
-        </div>
-    </article>
+    <p>
+        🍎 <strong>Guten Appetit!</strong>
+        Lass dir deinen selbst gebackenen Apfelkuchen schmecken.
+    </p>
 
-    <article class="karte">
-        <img
-            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700"
-            alt="Schokoladenkuchen">
-
-        <div class="inhalt">
-            <h3>🍰 Schokoladenkuchen</h3>
-            <p>⏱️ 45 Minuten | Einfach</p>
-
-            <button onclick="rezeptAnzeigen('kuchen')">
-                Rezept ansehen
-            </button>
-
-            <div class="details" id="kuchen">
-                <h4>Zutaten</h4>
-                <ul>
-                    <li>200 g Mehl</li>
-                    <li>150 g Zucker</li>
-                    <li>2 Eier</li>
-                    <li>100 g Butter</li>
-                    <li>30 g Kakaopulver</li>
-                    <li>1 TL Backpulver</li>
-                </ul>
-
-                <h4>Zubereitung</h4>
-                Alle Zutaten verrühren und in eine
-                gefettete Backform geben.
-                Bei 180 °C etwa 30 Minuten backen.
-            </div>
-        </div>
-    </article>
-
-    <article class="karte">
-        <img
-            src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700"
-            alt="Pizza">
-
-        <div class="inhalt">
-            <h3>🍕 Pizza</h3>
-            <p>⏱️ 35 Minuten | Einfach</p>
-
-            <button onclick="rezeptAnzeigen('pizza')">
-                Rezept ansehen
-            </button>
-
-            <div class="details" id="pizza">
-                <h4>Zutaten</h4>
-                <ul>
-                    <li>1 Pizzateig</li>
-                    <li>150 g passierte Tomaten</li>
-                    <li>150 g geriebener Käse</li>
-                    <li>Oregano</li>
-                </ul>
-
-                <h4>Zubereitung</h4>
-                Teig mit Tomatensoße bestreichen.
-                Käse und Oregano darauf verteilen.
-                Bei 220 °C etwa 12–15 Minuten backen.
-            </div>
-        </div>
-    </article>
+    <button class="button" onclick="window.print()">
+        🖨️ Rezept drucken
+    </button>
 
 </main>
 
-<section class="intro" id="ueber">
-    <h2>❤️ Über meine Rezeptwelt</h2>
-    <p>Hier findest du leckere Ideen zum Nachkochen
-       und Nachbacken.</p>
-</section>
-
 <footer>
-    <p>© 2026 Meine Rezeptwelt | Mit ❤️ gemacht</p>
+    Mit ❤️ gebacken · Mein Apfelkuchen-Rezept
 </footer>
-
-<script>
-    function rezeptAnzeigen(id) {
-        const rezept = document.getElementById(id);
-        rezept.classList.toggle("anzeigen");
-    }
-</script>
 
 </body>
 </html>
